@@ -48,19 +48,31 @@ function Home() {
         </time>
 
         <article className="flex w-full space-x-2">
+          {/* Hours */}
           <div className="control-wrapper">
             <select className="selectEl">
               <option defaultValue="Minutes" hidden>
                 Hour
               </option>
+              {Array.from({ length: 24 }, (_, i) => (
+                <option value={i} key={i}>
+                  {i.toString().padStart(2, '0')}
+                </option>
+              ))}
             </select>
           </div>
 
+          {/* Minutes */}
           <div className="control-wrapper">
             <select className="selectEl">
               <option defaultValue="Minutes" hidden>
                 Minutes
               </option>
+              {Array.from({ length: 60 }, (_, i) => (
+                <option value={i} key={i}>
+                  {i.toString().padStart(2, '0')}
+                </option>
+              ))}
             </select>
           </div>
         </article>
