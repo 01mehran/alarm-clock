@@ -50,7 +50,7 @@ function Home() {
         <article className="flex w-full space-x-2">
           <div className="control-wrapper">
             <select className="selectEl">
-              <option value="" disabled style={{ display: 'none' }}>
+              <option defaultValue="Minutes" hidden>
                 Hour
               </option>
             </select>
@@ -58,7 +58,7 @@ function Home() {
 
           <div className="control-wrapper">
             <select className="selectEl">
-              <option value="" disabled style={{ display: 'none' }}>
+              <option defaultValue="Minutes" hidden>
                 Minutes
               </option>
             </select>
