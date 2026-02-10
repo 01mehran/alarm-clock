@@ -59,16 +59,21 @@ function Home() {
 
   return (
     <main className="small:px-0 flex h-dvh items-center justify-center bg-blue-400 px-2">
-      <div className="flex h-110 w-full max-w-120 flex-col items-center justify-around rounded-2xl bg-white p-6">
-        <article className="mx-auto w-44">
-          <img
-            src={clock}
-            alt="ringtone-clock"
-            className="h-full w-full object-cover"
-          />
-        </article>
+      <section className="flex h-110 w-full max-w-120 flex-col items-center justify-around rounded-2xl bg-white p-6">
+        <header>
+          <figure className="mx-auto w-44">
+            <img
+              src={clock}
+              alt="Alarm clock"
+              className="h-full w-full object-cover"
+            />
+          </figure>
+        </header>
 
-        <time className="w-full text-center text-[2.5rem] font-medium">
+        <time
+          dateTime={time.replace(/\s/g, '')}
+          className="w-full text-center text-[2.5rem] font-medium"
+        >
           {time || '-- :-- :--'}
         </time>
 
@@ -118,7 +123,7 @@ function Home() {
 
         <button
           onClick={handleSetAlarm}
-          className={`${alarmSet ? 'bg-red-500' : 'bg-blue-500'} w-full transform cursor-pointer rounded-sm py-2 text-xl text-white transition-all duration-200 hover:translate-y-px`}
+          className={`${alarmSet ? 'bg-red-500' : 'bg-blue-500'} w-full transform cursor-pointer rounded-sm border-0 py-2 text-xl text-white outline-0 transition-all duration-200 hover:translate-y-px`}
         >
           {alarmSet ? 'Stop alarm' : 'Set alarm'}
         </button>
@@ -126,7 +131,7 @@ function Home() {
         <audio ref={audioRef}>
           <source src="/ringtone.mp3" type="audio/mpeg" />
         </audio>
-      </div>
+      </section>
     </main>
   );
 }
