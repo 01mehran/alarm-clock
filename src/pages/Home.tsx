@@ -46,6 +46,13 @@ function Home() {
   }, [alarmSet, selectedHour, selectedMinutes]);
 
   function handleSetAlarm() {
+    if (alarmSet) {
+      audioRef.current?.pause();
+      audioRef.current!.currentTime = 0;
+      setAlarmSet(false);
+      return;
+    }
+
     if (!selectedHour || !selectedMinutes) return;
     setAlarmSet(true);
   }
@@ -69,49 +76,55 @@ function Home() {
           {/* Hours */}
           <div className="control-wrapper">
             <select
-              className="selectEl"
+              className={`selectEl ${alarmSet ? 'pointer-events-none opacity-50' : ''}`}
               onChange={(e) => setSelectedHour(e.target.value)}
               value={selectedHour}
             >
-              <option defaultValue="Minutes" hidden>
+              <option defaultValue="Hour" hidden>
                 Hour
               </option>
-              {Array.from({ length: 24 }, (_, i) => (
-                <option value={i} key={i}>
-                  {i.toString().padStart(2, '0')}
-                </option>
-              ))}
+              {Array.from({ length: 24 }, (_, i) => {
+                const hour = formatTime(i);
+                return (
+                  <option value={hour} key={hour}>
+                    {hour.toString().padStart(2, '0')}
+                  </option>
+                );
+              })}
             </select>
           </div>
 
           {/* Minutes */}
           <div className="control-wrapper">
             <select
-              className="selectEl"
+              className={`selectEl selectEl ${alarmSet ? 'pointer-events-none opacity-50' : ''}`}
               onChange={(e) => setSelectedMinutes(e.target.value)}
               value={selectedMinutes}
             >
               <option defaultValue="Minutes" hidden>
                 Minutes
               </option>
-              {Array.from({ length: 60 }, (_, i) => (
-                <option value={i} key={i}>
-                  {i.toString().padStart(2, '0')}
-                </option>
-              ))}
+              {Array.from({ length: 60 }, (_, i) => {
+                const minute = formatTime(i);
+                return (
+                  <option value={minute} key={minute}>
+                    {minute.toString().padStart(2, '0')}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </article>
 
         <button
           onClick={handleSetAlarm}
-          className="w-full transform cursor-pointer rounded-sm bg-blue-500 py-2 text-xl text-white transition-all duration-200 hover:translate-y-px"
+          className={`${alarmSet ? 'bg-red-500' : 'bg-blue-500'} w-full transform cursor-pointer rounded-sm py-2 text-xl text-white transition-all duration-200 hover:translate-y-px`}
         >
-          Set alarm
+          {alarmSet ? 'Stop alarm' : 'Set alarm'}
         </button>
 
         <audio ref={audioRef}>
-          <source src="/ringtone.mp3" typeof="audio/mpeg" />
+          <source src="/ringtone.mp3" type="audio/mpeg" />
         </audio>
       </div>
     </main>
