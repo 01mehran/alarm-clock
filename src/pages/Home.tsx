@@ -11,6 +11,7 @@ function Home() {
   const [time, setTime] = useState<string>('');
   const [selectedHour, setSelectedHour] = useState<string>('');
   const [selectedMinutes, setSelectedMinutes] = useState<string>('');
+  const [msg, setMsg] = useState<string>('');
 
   const [alarmSet, setAlarmSet] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -52,13 +53,21 @@ function Home() {
       return;
     }
 
-    if (!selectedHour || !selectedMinutes) return;
+    if (!selectedHour || !selectedMinutes) {
+      setMsg('Select your alarm time!');
+
+      setTimeout(() => {
+        setMsg('');
+      }, 2000);
+
+      return;
+    }
     setAlarmSet(true);
   }
 
   return (
     <main className="small:px-0 flex h-dvh items-center justify-center bg-blue-400 px-2">
-      <section className="flex h-110 w-full max-w-120 flex-col items-center justify-around rounded-2xl bg-white p-6">
+      <section className="relative flex h-110 w-full max-w-120 flex-col items-center justify-around rounded-2xl bg-white p-6">
         <header>
           <figure className="mx-auto w-44">
             <img
@@ -130,6 +139,10 @@ function Home() {
         <audio ref={audioRef}>
           <source src="/ringtone.mp3" type="audio/mpeg" />
         </audio>
+
+        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 transform text-[12px] font-medium tracking-wide text-nowrap text-red-500 sm:text-sm">
+          {msg}
+        </span>
       </section>
     </main>
   );
