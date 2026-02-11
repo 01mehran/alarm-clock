@@ -1,6 +1,9 @@
 // Hooks
 import { useEffect, useRef, useState } from 'react';
 
+// Utils;
+import { FormatTime } from '../utils/FormatTime';
+
 // images
 import clock from '../assets/images/clock.png';
 
@@ -12,18 +15,14 @@ function Home() {
   const [alarmSet, setAlarmSet] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const formatTime = (num: number): string => {
-    return num.toString().padStart(2, '0');
-  };
-
   // current time
   useEffect(() => {
     const updateTime = () => {
       const date = new Date();
 
-      const hours = formatTime(date.getHours());
-      const minutes = formatTime(date.getMinutes());
-      const seconds = formatTime(date.getSeconds());
+      const hours = FormatTime(date.getHours());
+      const minutes = FormatTime(date.getMinutes());
+      const seconds = FormatTime(date.getSeconds());
 
       setTime(`${hours} : ${minutes} : ${seconds}`);
 
@@ -89,7 +88,7 @@ function Home() {
                 Hour
               </option>
               {Array.from({ length: 24 }, (_, i) => {
-                const hour = formatTime(i);
+                const hour = FormatTime(i);
                 return (
                   <option value={hour} key={hour}>
                     {hour.toString().padStart(2, '0')}
@@ -110,7 +109,7 @@ function Home() {
                 Minutes
               </option>
               {Array.from({ length: 60 }, (_, i) => {
-                const minute = formatTime(i);
+                const minute = FormatTime(i);
                 return (
                   <option value={minute} key={minute}>
                     {minute.toString().padStart(2, '0')}
