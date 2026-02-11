@@ -6,6 +6,7 @@ import { FormatTime } from '../utils/FormatTime';
 
 // images
 import clock from '../assets/images/clock.png';
+import TimeSelect from '../components/TimeSelect';
 
 function Home() {
   const [time, setTime] = useState<string>('');
@@ -67,7 +68,7 @@ function Home() {
 
   return (
     <main className="small:px-0 flex h-dvh items-center justify-center bg-blue-400 px-2">
-      <section className="relative flex h-110 w-full max-w-120 flex-col items-center justify-around rounded-2xl bg-white p-6">
+      <section className="relative flex h-110 w-full max-w-120 flex-col items-center justify-around rounded-lg bg-white p-3 sm:p-6">
         <header>
           <figure className="mx-auto w-44">
             <img
@@ -87,46 +88,21 @@ function Home() {
 
         <article className="flex w-full space-x-2">
           {/* Hours */}
-          <div className="control-wrapper">
-            <select
-              className={`selectEl ${alarmSet ? 'pointer-events-none opacity-50' : ''}`}
-              onChange={(e) => setSelectedHour(e.target.value)}
-              value={selectedHour}
-            >
-              <option defaultValue="Hour" hidden>
-                Hour
-              </option>
-              {Array.from({ length: 24 }, (_, i) => {
-                const hour = FormatTime(i);
-                return (
-                  <option value={hour} key={hour}>
-                    {hour.toString().padStart(2, '0')}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+
+          <TimeSelect
+            onChange={setSelectedHour}
+            type="hour"
+            disabled={alarmSet}
+            value={selectedHour}
+          />
 
           {/* Minutes */}
-          <div className="control-wrapper">
-            <select
-              className={`selectEl selectEl ${alarmSet ? 'pointer-events-none opacity-50' : ''}`}
-              onChange={(e) => setSelectedMinutes(e.target.value)}
-              value={selectedMinutes}
-            >
-              <option defaultValue="Minutes" hidden>
-                Minutes
-              </option>
-              {Array.from({ length: 60 }, (_, i) => {
-                const minute = FormatTime(i);
-                return (
-                  <option value={minute} key={minute}>
-                    {minute.toString().padStart(2, '0')}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+          <TimeSelect
+            onChange={setSelectedMinutes}
+            type="minutes"
+            value={selectedMinutes}
+            disabled={alarmSet}
+          />
         </article>
 
         <button
