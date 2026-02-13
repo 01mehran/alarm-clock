@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 // Utils;
 import { FormatTime } from '../utils/FormatTime';
 
-// images
-import clock from '../assets/images/clock.png';
+// components
 import TimeSelect from '../components/TimeSelect';
+import Header from '../components/Header';
 
 function Home() {
   const [time, setTime] = useState<string>('');
@@ -69,15 +69,7 @@ function Home() {
   return (
     <main className="small:px-0 flex h-dvh items-center justify-center bg-blue-400 px-2">
       <section className="relative flex h-110 w-full max-w-120 flex-col items-center justify-around rounded-lg bg-white p-3 sm:p-6">
-        <header>
-          <figure className="mx-auto w-44">
-            <img
-              src={clock}
-              alt="Alarm clock"
-              className="h-full w-full object-cover"
-            />
-          </figure>
-        </header>
+        <Header />
 
         <time
           dateTime={time.replace(/\s/g, '')}
