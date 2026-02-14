@@ -4,9 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 // Utils;
 import { FormatTime } from '../utils/FormatTime';
 
-// components
+// components;
 import Header from '../components/Header';
 import CustomSelect from '../components/CustomSelect';
+
+// Audio
+import ringtone from '../assets/audio/ringtone.mp3';
 
 function Home() {
   const [time, setTime] = useState<string>('');
@@ -111,7 +114,7 @@ function Home() {
         </button>
 
         <audio ref={audioRef}>
-          <source src="/ringtone.mp3" type="audio/mpeg" />
+          <source src={ringtone} type="audio/mpeg" />
         </audio>
 
         <span className="absolute bottom-1 left-1/2 -translate-x-1/2 transform text-[12px] font-medium tracking-wide text-nowrap text-red-500 sm:text-sm">
