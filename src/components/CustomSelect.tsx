@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// Type;
 interface ICustomTimeSelect {
   onChange: (value: string) => void;
   value: string;
@@ -35,12 +36,15 @@ function CustomSelect({ onChange, value, type, disabled }: ICustomTimeSelect) {
       </div>
 
       {isOpen && !disabled && (
-        <ul className="absolute top-14 z-10 h-42 w-full overflow-scroll rounded-sm bg-blue-500 px-3 py-1.5 text-white">
+        <ul
+          style={{ scrollbarWidth: 'none' }}
+          className="absolute top-13 z-10 h-42 w-full overflow-scroll rounded-sm bg-blue-500 px-3 py-1.5 text-white"
+        >
           {Array.from({ length: items }, (_, i) => {
             const itemValue = i.toString().padStart(2, '0');
             return (
               <li
-                className={`${value === itemValue ? 'font-semibold text-red-600' : ''} cursor-pointer tracking-wider`}
+                className={`${value === itemValue ? 'text-xl font-semibold text-orange-700' : ''} transform cursor-pointer tracking-wider transition-all duration-200 hover:scale-95 hover:text-orange-700`}
                 key={i}
                 onClick={() => handleSeclet(i)}
               >
