@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 import { FormatTime } from '../utils/FormatTime';
 
 // components
-import TimeSelect from '../components/TimeSelect';
 import Header from '../components/Header';
+import CustomSelect from '../components/CustomSelect';
 
 function Home() {
   const [time, setTime] = useState<string>('');
@@ -79,20 +79,25 @@ function Home() {
         </time>
 
         <article className="flex w-full space-x-2">
-          {/* Hours */}
-
-          <TimeSelect
+          {/* Default select/options */}
+          {/* <TimeSelect
             onChange={setSelectedHour}
             type="hour"
             disabled={alarmSet}
             value={selectedHour}
+          /> */}
+
+          <CustomSelect
+            onChange={setSelectedHour}
+            value={selectedHour}
+            type="hour"
+            disabled={alarmSet}
           />
 
-          {/* Minutes */}
-          <TimeSelect
+          <CustomSelect
             onChange={setSelectedMinutes}
-            type="minutes"
             value={selectedMinutes}
+            type="minutes"
             disabled={alarmSet}
           />
         </article>
