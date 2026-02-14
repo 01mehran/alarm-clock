@@ -9,6 +9,10 @@ Shows the current time in real-time and lets you set an alarm by selecting hour 
 ![demo](/public/demo-1.png)
 ![demo](/public/demo-2.png)
 
+## Online Demo 👇
+ > Click [here](https://01mehran.github.io/alarm-clock)
+
+
 ## Features ✨
 
 - Real-time digital clock (updates every second)
