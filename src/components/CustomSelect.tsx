@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { FormatTime } from '../utils/FormatTime';
 
+// Icon; 
 import { VscChevronDown } from 'react-icons/vsc';
+
 // Type;
 interface ICustomTimeSelect {
   onChange: (value: string) => void;
@@ -21,7 +23,7 @@ function CustomSelect({ onChange, value, type, disabled }: ICustomTimeSelect) {
   };
 
   const handleSeclet = (num: number): void => {
-    const formattedValue = num.toString().padStart(2, '0');
+    const formattedValue = FormatTime(num);
     onChange(formattedValue);
     setIsOpen(false);
   };
