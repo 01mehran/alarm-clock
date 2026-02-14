@@ -63,6 +63,7 @@ function Home() {
 
       return;
     }
+
     setAlarmSet(true);
   }
 

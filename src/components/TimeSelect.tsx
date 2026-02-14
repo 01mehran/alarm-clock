@@ -1,3 +1,6 @@
+// Utils
+import { FormatTime } from '../utils/FormatTime';
+
 interface ISelectTime {
   value: string;
   onChange: (value: string) => void;
@@ -25,7 +28,7 @@ const TimeSelect = ({
           {label}
         </option>
         {Array.from({ length: items }, (_, i) => {
-          const formattedValue = i.toString().padStart(2, '0');
+          const formattedValue = FormatTime(i);
           return (
             <option value={formattedValue} key={formattedValue}>
               {formattedValue}
