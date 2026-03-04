@@ -1,16 +1,14 @@
+// Hooks;
 import { useState } from 'react';
+
+// Utils;
 import { FormatTime } from '../utils/FormatTime';
 
-// Icon; 
+// Icon;
 import { VscChevronDown } from 'react-icons/vsc';
 
 // Type;
-interface ICustomTimeSelect {
-  onChange: (value: string) => void;
-  value: string;
-  type: 'hour' | 'minutes';
-  disabled?: boolean;
-}
+import type { ICustomTimeSelect } from '../types/Types';
 
 function CustomSelect({ onChange, value, type, disabled }: ICustomTimeSelect) {
   const [isOpen, setIsOpen] = useState(false);

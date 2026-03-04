@@ -1,12 +1,8 @@
 // Utils
-import { FormatTime } from '../utils/FormatTime';
+import type { ISelectTime } from '../types/Types';
 
-interface ISelectTime {
-  value: string;
-  onChange: (value: string) => void;
-  disabled?: boolean;
-  type: string;
-}
+// Types;
+import { FormatTime } from '../utils/FormatTime';
 
 const TimeSelect = ({
   value,
