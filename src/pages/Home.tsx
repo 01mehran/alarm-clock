@@ -5,8 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 import { FormatTime } from '../utils/FormatTime';
 
 // components;
-import Header from '../components/Header';
-import CustomSelect from '../components/CustomSelect';
+// import Header from '../components/Header';
+import CustomSelect from '@compos/CustomSelect';
+import Header from '@compos/Header';
 
 // Audio
 import ringtone from '../assets/audio/ringtone.mp3';
