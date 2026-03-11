@@ -2,15 +2,14 @@
 import { useEffect, useRef, useState } from 'react';
 
 // Utils;
-import { FormatTime } from '../utils/FormatTime';
+import { FormatTime } from '@/utils/FormatTime';
 
 // components;
-// import Header from '../components/Header';
 import CustomSelect from '@compos/CustomSelect';
 import Header from '@compos/Header';
 
 // Audio
-import ringtone from '../assets/audio/ringtone.mp3';
+import ringtone from '@assets/audio/ringtone.mp3';
 
 function Home() {
   const [time, setTime] = useState<string>('');

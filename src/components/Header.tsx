@@ -1,5 +1,5 @@
 // Image;
-import clock from '../assets/images/clock.png';
+import clock from '@assets/images/clock.png';
 
 function Header() {
   return (
